@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.2.0
-Release  : 17
+Release  : 18
 URL      : http://www.libarchive.org/downloads/libarchive-3.2.0.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.2.0.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -17,6 +17,9 @@ BuildRequires : acl-dev
 BuildRequires : attr-dev
 BuildRequires : bzip2-dev
 BuildRequires : cmake
+BuildRequires : e2fsprogs-dev
+BuildRequires : libxml2-dev
+BuildRequires : lz4-dev
 BuildRequires : lzo-dev
 BuildRequires : nettle-dev nettle-lib
 BuildRequires : openssl-dev
