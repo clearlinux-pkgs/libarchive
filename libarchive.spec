@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.2.1
-Release  : 19
+Release  : 20
 URL      : http://www.libarchive.org/downloads/libarchive-3.2.1.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.2.1.tar.gz
 Summary  : Library to create and read several different archive formats
