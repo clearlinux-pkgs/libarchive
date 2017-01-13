@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.2.2
-Release  : 22
+Release  : 23
 URL      : http://www.libarchive.org/downloads/libarchive-3.2.2.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.2.2.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -18,12 +18,14 @@ BuildRequires : attr-dev
 BuildRequires : bzip2-dev
 BuildRequires : cmake
 BuildRequires : e2fsprogs-dev
+BuildRequires : expat-dev
 BuildRequires : libxml2-dev
 BuildRequires : lz4-dev
 BuildRequires : lzo-dev
 BuildRequires : nettle-dev nettle-lib
 BuildRequires : openssl-dev
 BuildRequires : pkgconfig(libxml-2.0)
+BuildRequires : xz-dev
 
 %description
 Libarchive is a programming library that can create and read several
@@ -70,7 +72,7 @@ lib components for the libarchive package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484320736
+export SOURCE_DATE_EPOCH=1484321499
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 

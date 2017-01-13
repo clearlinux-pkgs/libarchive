@@ -7,3 +7,6 @@ attr-dev
 libxml2-dev
 e2fsprogs-dev
 lz4-dev
+xz-dev
+expat-dev
+lzo-dev
