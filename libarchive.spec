@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.2.2
-Release  : 24
+Release  : 25
 URL      : http://www.libarchive.org/downloads/libarchive-3.2.2.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.2.2.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -25,7 +25,10 @@ BuildRequires : lzo-dev
 BuildRequires : nettle-dev nettle-lib
 BuildRequires : openssl-dev
 BuildRequires : pkgconfig(libxml-2.0)
+BuildRequires : pkgconfig(zlib)
 BuildRequires : xz-dev
+BuildRequires : zlib-dev
+Patch1: cve-2017-5601.patch
 
 %description
 Libarchive is a programming library that can create and read several
@@ -69,10 +72,11 @@ lib components for the libarchive package.
 
 %prep
 %setup -q -n libarchive-3.2.2
+%patch1 -p1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484321499
+export SOURCE_DATE_EPOCH=1486504434
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -84,6 +88,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1486504434
 rm -rf %{buildroot}
 %make_install
 
