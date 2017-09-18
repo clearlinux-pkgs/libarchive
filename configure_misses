@@ -1,0 +1,96 @@
+Configure miss: copyfile.h usability
+Configure miss: copyfile.h presence
+Configure miss: copyfile.h
+Configure miss: membership.h usability
+Configure miss: membership.h presence
+Configure miss: membership.h
+Configure miss: readpassphrase.h usability
+Configure miss: readpassphrase.h presence
+Configure miss: readpassphrase.h
+Configure miss: sys/ea.h usability
+Configure miss: sys/ea.h presence
+Configure miss: sys/ea.h
+Configure miss: sys/extattr.h usability
+Configure miss: sys/extattr.h presence
+Configure miss: sys/extattr.h
+Configure miss: sys/richacl.h usability
+Configure miss: sys/richacl.h presence
+Configure miss: sys/richacl.h
+Configure miss: sys/utime.h usability
+Configure miss: sys/utime.h presence
+Configure miss: sys/utime.h
+Configure miss: wincrypt.h
+Configure miss: winioctl.h
+Configure miss: localcharset.h usability
+Configure miss: localcharset.h presence
+Configure miss: localcharset.h
+Configure miss: locale_charset
+Configure miss: locale_charset in -lcharset
+Configure miss: struct statfs.f_namemax
+Configure miss: struct statvfs.f_iosize
+Configure miss: struct stat.st_birthtime
+Configure miss: struct stat.st_mtimespec.tv_nsec
+Configure miss: struct stat.st_mtime_n
+Configure miss: struct stat.st_umtime
+Configure miss: struct stat.st_mtime_usec
+Configure miss: struct stat.st_flags
+Configure miss: whether EFTYPE is declared
+Configure miss: whether lstat accepts an empty string
+Configure miss: CreateHardLinkA
+Configure miss: arc4random_buf
+Configure miss: fchflags
+Configure miss: getvfsbyname
+Configure miss: lchflags
+Configure miss: readpassphrase
+Configure miss: strncpy_s
+Configure miss: _ctime64_s
+Configure miss: _fseeki64
+Configure miss: _get_timezone
+Configure miss: _localtime64_s
+Configure miss: _mkgmtime64
+Configure miss: cygwin_conv_path
+Configure miss: struct vfsconf
+Configure miss: struct xvfsconf
+Configure miss: whether D_MD_ORDER is declared
+Configure miss: struct dirent.d_namlen
+Configure miss: whether EXTATTR_NAMESPACE_USER is declared
+Configure miss: whether XATTR_NOFOLLOW is declared
+Configure miss: richacl_get_file in -lrichacl
+Configure miss: struct richace
+Configure miss: struct richacl
+Configure miss: acl
+Configure miss: facl
+Configure miss: support for ARCHIVE_CRYPTO_MD5_LIBC
+Configure miss: support for ARCHIVE_CRYPTO_MD5_LIBSYSTEM
+Configure miss: support for ARCHIVE_CRYPTO_RMD160_LIBC
+Configure miss: support for ARCHIVE_CRYPTO_SHA1_LIBC
+Configure miss: support for ARCHIVE_CRYPTO_SHA1_LIBSYSTEM
+Configure miss: support for ARCHIVE_CRYPTO_SHA256_LIBC
+Configure miss: support for ARCHIVE_CRYPTO_SHA256_LIBC2
+Configure miss: support for ARCHIVE_CRYPTO_SHA256_LIBC3
+Configure miss: support for ARCHIVE_CRYPTO_SHA256_LIBSYSTEM
+Configure miss: support for ARCHIVE_CRYPTO_SHA384_LIBC
+Configure miss: support for ARCHIVE_CRYPTO_SHA384_LIBC2
+Configure miss: support for ARCHIVE_CRYPTO_SHA384_LIBC3
+Configure miss: support for ARCHIVE_CRYPTO_SHA384_LIBSYSTEM
+Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC
+Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC2
+Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC3
+Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBSYSTEM
+Configure miss: bcrypt.h
+Configure miss: md5.h usability
+Configure miss: md5.h presence
+Configure miss: md5.h
+Configure miss: ripemd.h usability
+Configure miss: ripemd.h presence
+Configure miss: ripemd.h
+Configure miss: sha.h usability
+Configure miss: sha.h presence
+Configure miss: sha.h
+Configure miss: sha256.h usability
+Configure miss: sha256.h presence
+Configure miss: sha256.h
+Configure miss: sha512.h usability
+Configure miss: sha512.h presence
+Configure miss: sha512.h
+Configure miss: MD5Init in -lmd

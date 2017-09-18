@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.3.2
-Release  : 29
+Release  : 30
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -29,6 +29,7 @@ BuildRequires : pkgconfig(zlib)
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
 Patch1: cve-2017-5601.patch
+Patch2: cve-2017-14166.patch
 
 %description
 Libarchive is a programming library that can create and read several
@@ -73,13 +74,14 @@ lib components for the libarchive package.
 %prep
 %setup -q -n libarchive-3.3.2
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1499706118
+export SOURCE_DATE_EPOCH=1505693664
 export CFLAGS="$CFLAGS -fstack-protector-strong "
 export FCFLAGS="$CFLAGS -fstack-protector-strong "
 export FFLAGS="$CFLAGS -fstack-protector-strong "
@@ -95,7 +97,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1499706118
+export SOURCE_DATE_EPOCH=1505693664
 rm -rf %{buildroot}
 %make_install
 
