@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.3.2
-Release  : 33
+Release  : 34
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -19,12 +19,10 @@ BuildRequires : bzip2-dev
 BuildRequires : cmake
 BuildRequires : e2fsprogs-dev
 BuildRequires : expat-dev
-BuildRequires : libxml2-dev
 BuildRequires : lz4-dev
 BuildRequires : lzo-dev
 BuildRequires : nettle-dev nettle-lib
 BuildRequires : openssl-dev
-BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
@@ -83,13 +81,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506615931
+export SOURCE_DATE_EPOCH=1516407238
 export CFLAGS="$CFLAGS -fstack-protector-strong "
 export FCFLAGS="$CFLAGS -fstack-protector-strong "
 export FFLAGS="$CFLAGS -fstack-protector-strong "
 export CXXFLAGS="$CXXFLAGS -fstack-protector-strong "
-%configure --disable-static
-make V=1  %{?_smp_mflags}
+%configure --disable-static --without-libxml2
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -99,7 +97,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1506615931
+export SOURCE_DATE_EPOCH=1516407238
 rm -rf %{buildroot}
 %make_install
 

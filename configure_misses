@@ -18,7 +18,6 @@ Configure miss: sys/richacl.h presence
 Configure miss: sys/richacl.h
 Configure miss: sys/utime.h usability
 Configure miss: sys/utime.h presence
-Configure miss: sys/utime.h
 Configure miss: wincrypt.h
 Configure miss: winioctl.h
 Configure miss: localcharset.h usability
@@ -26,6 +25,14 @@ Configure miss: localcharset.h presence
 Configure miss: localcharset.h
 Configure miss: locale_charset
 Configure miss: locale_charset in -lcharset
+Configure miss: LIBXML2_PC
+Configure miss: xmlInitParser in -lxml2
+Configure miss: libxml/xmlreader.h usability
+Configure miss: libxml/xmlreader.h presence
+Configure miss: libxml/xmlreader.h
+Configure miss: libxml/xmlwriter.h usability
+Configure miss: libxml/xmlwriter.h presence
+Configure miss: libxml/xmlwriter.h
 Configure miss: struct statfs.f_namemax
 Configure miss: struct statvfs.f_iosize
 Configure miss: struct stat.st_birthtime
@@ -37,7 +44,6 @@ Configure miss: struct stat.st_flags
 Configure miss: whether EFTYPE is declared
 Configure miss: whether lstat accepts an empty string
 Configure miss: CreateHardLinkA
-Configure miss: arc4random_buf
 Configure miss: fchflags
 Configure miss: getvfsbyname
 Configure miss: lchflags

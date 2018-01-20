@@ -1,8 +1,8 @@
 libacl.so.1
 libbz2.so.0
 libc.so.6
+libexpat.so.1
 liblz4.so.1
 liblzma.so.5
 libnettle.so.6
-libxml2.so.2
 libz.so.1
