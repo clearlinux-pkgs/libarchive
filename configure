@@ -1,1 +1,2 @@
 --without-libxml2
+--without-expat

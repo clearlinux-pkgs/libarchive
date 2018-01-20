@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.3.2
-Release  : 34
+Release  : 35
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -18,7 +18,6 @@ BuildRequires : attr-dev
 BuildRequires : bzip2-dev
 BuildRequires : cmake
 BuildRequires : e2fsprogs-dev
-BuildRequires : expat-dev
 BuildRequires : lz4-dev
 BuildRequires : lzo-dev
 BuildRequires : nettle-dev nettle-lib
@@ -81,12 +80,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516407238
+export SOURCE_DATE_EPOCH=1516409440
 export CFLAGS="$CFLAGS -fstack-protector-strong "
 export FCFLAGS="$CFLAGS -fstack-protector-strong "
 export FFLAGS="$CFLAGS -fstack-protector-strong "
 export CXXFLAGS="$CXXFLAGS -fstack-protector-strong "
-%configure --disable-static --without-libxml2
+%configure --disable-static --without-libxml2 \
+--without-expat
 make  %{?_smp_mflags}
 
 %check
@@ -97,7 +97,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1516407238
+export SOURCE_DATE_EPOCH=1516409440
 rm -rf %{buildroot}
 %make_install
 
