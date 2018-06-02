@@ -9,3 +9,5 @@ lz4-dev
 xz-dev
 expat-dev
 lzo-dev
+openssl-dev
+zlib-dev

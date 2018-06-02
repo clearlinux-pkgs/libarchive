@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.3.2
-Release  : 37
+Release  : 39
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -12,7 +12,7 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: libarchive-bin
 Requires: libarchive-lib
-Requires: libarchive-doc
+Requires: libarchive-man
 BuildRequires : acl-dev
 BuildRequires : attr-dev
 BuildRequires : bzip2-dev
@@ -20,9 +20,7 @@ BuildRequires : cmake
 BuildRequires : e2fsprogs-dev
 BuildRequires : lz4-dev
 BuildRequires : lzo-dev
-BuildRequires : nettle-dev nettle-lib
 BuildRequires : openssl-dev
-BuildRequires : pkgconfig(zlib)
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
 Patch1: cve-2017-5601.patch
@@ -37,6 +35,7 @@ variants and several CPIO formats. It can also write SHAR archives.
 %package bin
 Summary: bin components for the libarchive package.
 Group: Binaries
+Requires: libarchive-man
 
 %description bin
 bin components for the libarchive package.
@@ -53,14 +52,6 @@ Provides: libarchive-devel
 dev components for the libarchive package.
 
 
-%package doc
-Summary: doc components for the libarchive package.
-Group: Documentation
-
-%description doc
-doc components for the libarchive package.
-
-
 %package lib
 Summary: lib components for the libarchive package.
 Group: Libraries
@@ -69,26 +60,50 @@ Group: Libraries
 lib components for the libarchive package.
 
 
+%package man
+Summary: man components for the libarchive package.
+Group: Default
+
+%description man
+man components for the libarchive package.
+
+
 %prep
 %setup -q -n libarchive-3.3.2
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+pushd ..
+cp -a libarchive-3.3.2 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516409440
-export CFLAGS="$CFLAGS -fstack-protector-strong "
-export FCFLAGS="$CFLAGS -fstack-protector-strong "
-export FFLAGS="$CFLAGS -fstack-protector-strong "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong "
+export SOURCE_DATE_EPOCH=1527928790
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --without-libxml2 \
---without-expat
+--without-expat \
+--without-lz4 \
+--without-nettle
 make  %{?_smp_mflags}
 
+unset PKG_CONFIG_PATH
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=haswell"
+export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
+export LDFLAGS="$LDFLAGS -m64 -march=haswell"
+%configure --disable-static --without-libxml2 \
+--without-expat \
+--without-lz4 \
+--without-nettle   --libdir=/usr/lib64/haswell
+make  %{?_smp_mflags}
+popd
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
@@ -97,8 +112,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1516409440
+export SOURCE_DATE_EPOCH=1527928790
 rm -rf %{buildroot}
+pushd ../buildavx2/
+%make_install
+popd
 %make_install
 
 %files
@@ -113,16 +131,59 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/include/*.h
+/usr/lib64/haswell/libarchive.so
 /usr/lib64/libarchive.so
 /usr/lib64/pkgconfig/libarchive.pc
 
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
-%doc /usr/share/man/man3/*
-%doc /usr/share/man/man5/*
-
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/haswell/libarchive.so.13
+/usr/lib64/haswell/libarchive.so.13.3.2
 /usr/lib64/libarchive.so.13
 /usr/lib64/libarchive.so.13.3.2
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/bsdcat.1
+/usr/share/man/man1/bsdcpio.1
+/usr/share/man/man1/bsdtar.1
+/usr/share/man/man3/archive_entry.3
+/usr/share/man/man3/archive_entry_acl.3
+/usr/share/man/man3/archive_entry_linkify.3
+/usr/share/man/man3/archive_entry_paths.3
+/usr/share/man/man3/archive_entry_perms.3
+/usr/share/man/man3/archive_entry_stat.3
+/usr/share/man/man3/archive_entry_time.3
+/usr/share/man/man3/archive_read.3
+/usr/share/man/man3/archive_read_add_passphrase.3
+/usr/share/man/man3/archive_read_data.3
+/usr/share/man/man3/archive_read_disk.3
+/usr/share/man/man3/archive_read_extract.3
+/usr/share/man/man3/archive_read_filter.3
+/usr/share/man/man3/archive_read_format.3
+/usr/share/man/man3/archive_read_free.3
+/usr/share/man/man3/archive_read_header.3
+/usr/share/man/man3/archive_read_new.3
+/usr/share/man/man3/archive_read_open.3
+/usr/share/man/man3/archive_read_set_options.3
+/usr/share/man/man3/archive_util.3
+/usr/share/man/man3/archive_write.3
+/usr/share/man/man3/archive_write_blocksize.3
+/usr/share/man/man3/archive_write_data.3
+/usr/share/man/man3/archive_write_disk.3
+/usr/share/man/man3/archive_write_filter.3
+/usr/share/man/man3/archive_write_finish_entry.3
+/usr/share/man/man3/archive_write_format.3
+/usr/share/man/man3/archive_write_free.3
+/usr/share/man/man3/archive_write_header.3
+/usr/share/man/man3/archive_write_new.3
+/usr/share/man/man3/archive_write_open.3
+/usr/share/man/man3/archive_write_set_options.3
+/usr/share/man/man3/archive_write_set_passphrase.3
+/usr/share/man/man3/libarchive.3
+/usr/share/man/man3/libarchive_changes.3
+/usr/share/man/man3/libarchive_internals.3
+/usr/share/man/man5/cpio.5
+/usr/share/man/man5/libarchive-formats.5
+/usr/share/man/man5/mtree.5
+/usr/share/man/man5/tar.5

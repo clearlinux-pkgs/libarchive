@@ -1,7 +1,6 @@
 libacl.so.1
 libbz2.so.0
 libc.so.6
-liblz4.so.1
+libcrypto.so.1.0.0
 liblzma.so.5
-libnettle.so.6
 libz.so.1
