@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.3.2
-Release  : 39
+Release  : 40
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -12,11 +12,12 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: libarchive-bin
 Requires: libarchive-lib
+Requires: libarchive-license
 Requires: libarchive-man
 BuildRequires : acl-dev
 BuildRequires : attr-dev
+BuildRequires : buildreq-cmake
 BuildRequires : bzip2-dev
-BuildRequires : cmake
 BuildRequires : e2fsprogs-dev
 BuildRequires : lz4-dev
 BuildRequires : lzo-dev
@@ -26,6 +27,7 @@ BuildRequires : zlib-dev
 Patch1: cve-2017-5601.patch
 Patch2: cve-2017-14166.patch
 Patch3: cve-2017-14502.patch
+Patch4: cve-2017-14503.patch
 
 %description
 Libarchive is a programming library that can create and read several
@@ -35,6 +37,7 @@ variants and several CPIO formats. It can also write SHAR archives.
 %package bin
 Summary: bin components for the libarchive package.
 Group: Binaries
+Requires: libarchive-license
 Requires: libarchive-man
 
 %description bin
@@ -55,9 +58,18 @@ dev components for the libarchive package.
 %package lib
 Summary: lib components for the libarchive package.
 Group: Libraries
+Requires: libarchive-license
 
 %description lib
 lib components for the libarchive package.
+
+
+%package license
+Summary: license components for the libarchive package.
+Group: Default
+
+%description license
+license components for the libarchive package.
 
 
 %package man
@@ -73,6 +85,7 @@ man components for the libarchive package.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 pushd ..
 cp -a libarchive-3.3.2 buildavx2
 popd
@@ -82,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1527928790
+export SOURCE_DATE_EPOCH=1532545887
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -101,7 +114,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 %configure --disable-static --without-libxml2 \
 --without-expat \
 --without-lz4 \
---without-nettle   --libdir=/usr/lib64/haswell
+--without-nettle
 make  %{?_smp_mflags}
 popd
 %check
@@ -112,10 +125,12 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1527928790
+export SOURCE_DATE_EPOCH=1532545887
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/libarchive
+cp COPYING %{buildroot}/usr/share/doc/libarchive/COPYING
 pushd ../buildavx2/
-%make_install
+%make_install_avx2
 popd
 %make_install
 
@@ -127,6 +142,9 @@ popd
 /usr/bin/bsdcat
 /usr/bin/bsdcpio
 /usr/bin/bsdtar
+/usr/bin/haswell/bsdcat
+/usr/bin/haswell/bsdcpio
+/usr/bin/haswell/bsdtar
 
 %files dev
 %defattr(-,root,root,-)
@@ -141,6 +159,10 @@ popd
 /usr/lib64/haswell/libarchive.so.13.3.2
 /usr/lib64/libarchive.so.13
 /usr/lib64/libarchive.so.13.3.2
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/libarchive/COPYING
 
 %files man
 %defattr(-,root,root,-)
