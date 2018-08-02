@@ -25,7 +25,7 @@ Configure miss: localcharset.h presence
 Configure miss: localcharset.h
 Configure miss: locale_charset
 Configure miss: locale_charset in -lcharset
-Configure miss: LIBXML2_PC
+Configure miss: libxml-2.0
 Configure miss: xmlInitParser in -lxml2
 Configure miss: libxml/xmlreader.h usability
 Configure miss: libxml/xmlreader.h presence
@@ -127,7 +127,7 @@ Configure miss: localcharset.h presence
 Configure miss: localcharset.h
 Configure miss: locale_charset
 Configure miss: locale_charset in -lcharset
-Configure miss: LIBXML2_PC
+Configure miss: libxml-2.0
 Configure miss: xmlInitParser in -lxml2
 Configure miss: libxml/xmlreader.h usability
 Configure miss: libxml/xmlreader.h presence

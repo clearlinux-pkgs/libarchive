@@ -11,3 +11,4 @@ expat-dev
 lzo-dev
 openssl-dev
 zlib-dev
+zstd-dev
