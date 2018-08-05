@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.3.2
-Release  : 42
+Release  : 43
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533433117
+export SOURCE_DATE_EPOCH=1533438007
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -133,7 +133,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1533433117
+export SOURCE_DATE_EPOCH=1533438007
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/libarchive
 cp COPYING %{buildroot}/usr/share/doc/libarchive/COPYING
@@ -160,23 +160,6 @@ popd
 /usr/lib64/haswell/libarchive.so
 /usr/lib64/libarchive.so
 /usr/lib64/pkgconfig/libarchive.pc
-
-%files lib
-%defattr(-,root,root,-)
-/usr/lib64/haswell/libarchive.so.13
-/usr/lib64/haswell/libarchive.so.13.3.3
-/usr/lib64/libarchive.so.13
-/usr/lib64/libarchive.so.13.3.3
-
-%files license
-%defattr(-,root,root,-)
-/usr/share/doc/libarchive/COPYING
-
-%files man
-%defattr(-,root,root,-)
-/usr/share/man/man1/bsdcat.1
-/usr/share/man/man1/bsdcpio.1
-/usr/share/man/man1/bsdtar.1
 /usr/share/man/man3/archive_entry.3
 /usr/share/man/man3/archive_entry_acl.3
 /usr/share/man/man3/archive_entry_linkify.3
@@ -213,6 +196,23 @@ popd
 /usr/share/man/man3/libarchive.3
 /usr/share/man/man3/libarchive_changes.3
 /usr/share/man/man3/libarchive_internals.3
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/haswell/libarchive.so.13
+/usr/lib64/haswell/libarchive.so.13.3.3
+/usr/lib64/libarchive.so.13
+/usr/lib64/libarchive.so.13.3.3
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/libarchive/COPYING
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/bsdcat.1
+/usr/share/man/man1/bsdcpio.1
+/usr/share/man/man1/bsdtar.1
 /usr/share/man/man5/cpio.5
 /usr/share/man/man5/libarchive-formats.5
 /usr/share/man/man5/mtree.5
