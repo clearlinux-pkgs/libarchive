@@ -25,7 +25,7 @@ Configure miss: localcharset.h presence
 Configure miss: localcharset.h
 Configure miss: locale_charset
 Configure miss: locale_charset in -lcharset
-Configure miss: libxml-2.0
+Configure miss: LIBXML2_PC
 Configure miss: xmlInitParser in -lxml2
 Configure miss: libxml/xmlreader.h usability
 Configure miss: libxml/xmlreader.h presence
@@ -42,6 +42,7 @@ Configure miss: struct stat.st_umtime
 Configure miss: struct stat.st_mtime_usec
 Configure miss: struct stat.st_flags
 Configure miss: whether EFTYPE is declared
+Configure miss: whether sys/types.h defines makedev
 Configure miss: whether lstat accepts an empty string
 Configure miss: CreateHardLinkA
 Configure miss: fchflags
@@ -127,7 +128,7 @@ Configure miss: localcharset.h presence
 Configure miss: localcharset.h
 Configure miss: locale_charset
 Configure miss: locale_charset in -lcharset
-Configure miss: libxml-2.0
+Configure miss: LIBXML2_PC
 Configure miss: xmlInitParser in -lxml2
 Configure miss: libxml/xmlreader.h usability
 Configure miss: libxml/xmlreader.h presence
@@ -144,6 +145,7 @@ Configure miss: struct stat.st_umtime
 Configure miss: struct stat.st_mtime_usec
 Configure miss: struct stat.st_flags
 Configure miss: whether EFTYPE is declared
+Configure miss: whether sys/types.h defines makedev
 Configure miss: whether lstat accepts an empty string
 Configure miss: CreateHardLinkA
 Configure miss: fchflags
