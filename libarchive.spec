@@ -4,14 +4,13 @@
 #
 Name     : libarchive
 Version  : 3.3.3
-Release  : 45
+Release  : 46
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 Summary  : Library to create and read several different archive formats
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: libarchive-bin = %{version}-%{release}
-Requires: libarchive-data = %{version}-%{release}
 Requires: libarchive-lib = %{version}-%{release}
 Requires: libarchive-license = %{version}-%{release}
 Requires: libarchive-man = %{version}-%{release}
@@ -36,10 +35,17 @@ Libarchive is a programming library that can create and read several
 different streaming archive formats, including most popular TAR
 variants and several CPIO formats. It can also write SHAR archives.
 
+%package abi
+Summary: abi components for the libarchive package.
+Group: Default
+
+%description abi
+abi components for the libarchive package.
+
+
 %package bin
 Summary: bin components for the libarchive package.
 Group: Binaries
-Requires: libarchive-data = %{version}-%{release}
 Requires: libarchive-license = %{version}-%{release}
 Requires: libarchive-man = %{version}-%{release}
 
@@ -47,20 +53,11 @@ Requires: libarchive-man = %{version}-%{release}
 bin components for the libarchive package.
 
 
-%package data
-Summary: data components for the libarchive package.
-Group: Data
-
-%description data
-data components for the libarchive package.
-
-
 %package dev
 Summary: dev components for the libarchive package.
 Group: Development
 Requires: libarchive-lib = %{version}-%{release}
 Requires: libarchive-bin = %{version}-%{release}
-Requires: libarchive-data = %{version}-%{release}
 Provides: libarchive-devel = %{version}-%{release}
 
 %description dev
@@ -70,7 +67,6 @@ dev components for the libarchive package.
 %package lib
 Summary: lib components for the libarchive package.
 Group: Libraries
-Requires: libarchive-data = %{version}-%{release}
 Requires: libarchive-license = %{version}-%{release}
 
 %description lib
@@ -104,7 +100,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541743464
+export SOURCE_DATE_EPOCH=1541744086
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -136,7 +132,7 @@ cd ../buildavx2;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1541743464
+export SOURCE_DATE_EPOCH=1541744086
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
 cp COPYING %{buildroot}/usr/share/package-licenses/libarchive/COPYING
@@ -148,6 +144,10 @@ popd
 %files
 %defattr(-,root,root,-)
 
+%files abi
+%defattr(-,root,root,-)
+/usr/share/abi/libarchive.so.13.3.3.abi
+
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/bsdcat
@@ -156,10 +156,6 @@ popd
 /usr/bin/haswell/bsdcat
 /usr/bin/haswell/bsdcpio
 /usr/bin/haswell/bsdtar
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/abi/libarchive.so.13.3.3.abi
 
 %files dev
 %defattr(-,root,root,-)
