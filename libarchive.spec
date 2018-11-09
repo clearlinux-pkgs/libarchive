@@ -4,16 +4,17 @@
 #
 Name     : libarchive
 Version  : 3.3.3
-Release  : 44
+Release  : 45
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 Summary  : Library to create and read several different archive formats
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: libarchive-bin
-Requires: libarchive-lib
-Requires: libarchive-license
-Requires: libarchive-man
+Requires: libarchive-bin = %{version}-%{release}
+Requires: libarchive-data = %{version}-%{release}
+Requires: libarchive-lib = %{version}-%{release}
+Requires: libarchive-license = %{version}-%{release}
+Requires: libarchive-man = %{version}-%{release}
 BuildRequires : acl-dev
 BuildRequires : attr-dev
 BuildRequires : buildreq-cmake
@@ -38,19 +39,29 @@ variants and several CPIO formats. It can also write SHAR archives.
 %package bin
 Summary: bin components for the libarchive package.
 Group: Binaries
-Requires: libarchive-license
-Requires: libarchive-man
+Requires: libarchive-data = %{version}-%{release}
+Requires: libarchive-license = %{version}-%{release}
+Requires: libarchive-man = %{version}-%{release}
 
 %description bin
 bin components for the libarchive package.
 
 
+%package data
+Summary: data components for the libarchive package.
+Group: Data
+
+%description data
+data components for the libarchive package.
+
+
 %package dev
 Summary: dev components for the libarchive package.
 Group: Development
-Requires: libarchive-lib
-Requires: libarchive-bin
-Provides: libarchive-devel
+Requires: libarchive-lib = %{version}-%{release}
+Requires: libarchive-bin = %{version}-%{release}
+Requires: libarchive-data = %{version}-%{release}
+Provides: libarchive-devel = %{version}-%{release}
 
 %description dev
 dev components for the libarchive package.
@@ -59,7 +70,8 @@ dev components for the libarchive package.
 %package lib
 Summary: lib components for the libarchive package.
 Group: Libraries
-Requires: libarchive-license
+Requires: libarchive-data = %{version}-%{release}
+Requires: libarchive-license = %{version}-%{release}
 
 %description lib
 lib components for the libarchive package.
@@ -92,7 +104,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536131041
+export SOURCE_DATE_EPOCH=1541743464
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -120,12 +132,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
+cd ../buildavx2;
+make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1536131041
+export SOURCE_DATE_EPOCH=1541743464
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/libarchive
-cp COPYING %{buildroot}/usr/share/doc/libarchive/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
+cp COPYING %{buildroot}/usr/share/package-licenses/libarchive/COPYING
 pushd ../buildavx2/
 %make_install_avx2
 popd
@@ -142,6 +156,10 @@ popd
 /usr/bin/haswell/bsdcat
 /usr/bin/haswell/bsdcpio
 /usr/bin/haswell/bsdtar
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/abi/libarchive.so.13.3.3.abi
 
 %files dev
 %defattr(-,root,root,-)
@@ -194,11 +212,11 @@ popd
 /usr/lib64/libarchive.so.13.3.3
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/libarchive/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/libarchive/COPYING
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/bsdcat.1
 /usr/share/man/man1/bsdcpio.1
 /usr/share/man/man1/bsdtar.1

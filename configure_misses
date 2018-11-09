@@ -1,3 +1,6 @@
+Configure miss: attr/xattr.h usability
+Configure miss: attr/xattr.h presence
+Configure miss: attr/xattr.h
 Configure miss: copyfile.h usability
 Configure miss: copyfile.h presence
 Configure miss: copyfile.h
@@ -85,6 +88,7 @@ Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC2
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC3
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBSYSTEM
 Configure miss: bcrypt.h
+Configure miss: EVP_CIPHER_CTX_init in -lcrypto
 Configure miss: md5.h usability
 Configure miss: md5.h presence
 Configure miss: md5.h
@@ -101,6 +105,9 @@ Configure miss: sha512.h usability
 Configure miss: sha512.h presence
 Configure miss: sha512.h
 Configure miss: MD5Init in -lmd
+Configure miss: attr/xattr.h usability
+Configure miss: attr/xattr.h presence
+Configure miss: attr/xattr.h
 Configure miss: copyfile.h usability
 Configure miss: copyfile.h presence
 Configure miss: copyfile.h
@@ -188,6 +195,7 @@ Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC2
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC3
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBSYSTEM
 Configure miss: bcrypt.h
+Configure miss: EVP_CIPHER_CTX_init in -lcrypto
 Configure miss: md5.h usability
 Configure miss: md5.h presence
 Configure miss: md5.h
