@@ -4,7 +4,7 @@
 #
 Name     : libarchive
 Version  : 3.3.3
-Release  : 47
+Release  : 48
 URL      : http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 Source0  : http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 Summary  : Library to create and read several different archive formats
@@ -100,7 +100,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541744086
+export SOURCE_DATE_EPOCH=1542401223
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -132,7 +132,7 @@ cd ../buildavx2;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1541744086
+export SOURCE_DATE_EPOCH=1542401223
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
 cp COPYING %{buildroot}/usr/share/package-licenses/libarchive/COPYING
@@ -146,7 +146,7 @@ popd
 
 %files abi
 %defattr(-,root,root,-)
-/usr/share/abi/libarchive.so.13.3.3.abi
+/usr/share/abi/libarchive.so.13.abi
 
 %files bin
 %defattr(-,root,root,-)
