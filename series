@@ -1,6 +1,4 @@
-#git-update-for-zstd.patch
-cve-2017-5601.nopatch
-cve-2017-14166.nopatch
-cve-2017-14502.nopatch
-cve-2017-14503.nopatch
-#cve-2017-14501.patch
+CVE-2018-1000877.patch
+CVE-2018-1000878.patch
+CVE-2018-1000879.patch
+CVE-2018-1000880.patch
