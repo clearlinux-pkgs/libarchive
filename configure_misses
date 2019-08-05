@@ -23,6 +23,10 @@ Configure miss: sys/utime.h usability
 Configure miss: sys/utime.h presence
 Configure miss: wincrypt.h
 Configure miss: winioctl.h
+Configure miss: blake2.h usability
+Configure miss: blake2.h presence
+Configure miss: blake2.h
+Configure miss: blake2sp_init in -lb2
 Configure miss: localcharset.h usability
 Configure miss: localcharset.h presence
 Configure miss: localcharset.h
@@ -88,7 +92,6 @@ Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC2
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC3
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBSYSTEM
 Configure miss: bcrypt.h
-Configure miss: EVP_CIPHER_CTX_init in -lcrypto
 Configure miss: md5.h usability
 Configure miss: md5.h presence
 Configure miss: md5.h
@@ -130,6 +133,10 @@ Configure miss: sys/utime.h usability
 Configure miss: sys/utime.h presence
 Configure miss: wincrypt.h
 Configure miss: winioctl.h
+Configure miss: blake2.h usability
+Configure miss: blake2.h presence
+Configure miss: blake2.h
+Configure miss: blake2sp_init in -lb2
 Configure miss: localcharset.h usability
 Configure miss: localcharset.h presence
 Configure miss: localcharset.h
@@ -195,7 +202,6 @@ Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC2
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBC3
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBSYSTEM
 Configure miss: bcrypt.h
-Configure miss: EVP_CIPHER_CTX_init in -lcrypto
 Configure miss: md5.h usability
 Configure miss: md5.h presence
 Configure miss: md5.h
