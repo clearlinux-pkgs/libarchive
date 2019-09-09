@@ -6,7 +6,7 @@
 #
 Name     : libarchive
 Version  : 3.4.0
-Release  : 53
+Release  : 54
 URL      : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz
 Source0  : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz
 Source1 : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz.asc
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565028809
+export SOURCE_DATE_EPOCH=1568064552
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -127,7 +127,7 @@ cd ../buildavx2;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1565028809
+export SOURCE_DATE_EPOCH=1568064552
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
 cp COPYING %{buildroot}/usr/share/package-licenses/libarchive/COPYING
@@ -150,7 +150,8 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/archive.h
+/usr/include/archive_entry.h
 /usr/lib64/haswell/libarchive.so
 /usr/lib64/libarchive.so
 /usr/lib64/pkgconfig/libarchive.pc
