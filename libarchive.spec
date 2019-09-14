@@ -6,7 +6,7 @@
 #
 Name     : libarchive
 Version  : 3.4.0
-Release  : 54
+Release  : 55
 URL      : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz
 Source0  : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz
 Source1 : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz.asc
