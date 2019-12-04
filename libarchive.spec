@@ -6,7 +6,7 @@
 #
 Name     : libarchive
 Version  : 3.4.0
-Release  : 55
+Release  : 56
 URL      : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz
 Source0  : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz
 Source1 : https://github.com/libarchive/libarchive/releases/download/v3.4.0/libarchive-3.4.0.tar.gz.asc
@@ -29,6 +29,7 @@ BuildRequires : xz-dev
 BuildRequires : zlib-dev
 BuildRequires : zstd-dev
 Patch1: 0001-test-disable-one-zstd-assertion.patch
+Patch2: CVE-2019-19221.patch
 
 %description
 Libarchive is a programming library that can create and read several different
@@ -84,7 +85,9 @@ man components for the libarchive package.
 
 %prep
 %setup -q -n libarchive-3.4.0
+cd %{_builddir}/libarchive-3.4.0
 %patch1 -p1
+%patch2 -p1
 pushd ..
 cp -a libarchive-3.4.0 buildavx2
 popd
@@ -94,7 +97,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568064552
+export SOURCE_DATE_EPOCH=1575485725
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -127,10 +130,10 @@ cd ../buildavx2;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1568064552
+export SOURCE_DATE_EPOCH=1575485725
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
-cp COPYING %{buildroot}/usr/share/package-licenses/libarchive/COPYING
+cp %{_builddir}/libarchive-3.4.0/COPYING %{buildroot}/usr/share/package-licenses/libarchive/a8393c2095373ba49b42b51120abf8e595138559
 pushd ../buildavx2/
 %make_install_avx2
 popd
@@ -202,7 +205,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libarchive/COPYING
+/usr/share/package-licenses/libarchive/a8393c2095373ba49b42b51120abf8e595138559
 
 %files man
 %defattr(0644,root,root,0755)
