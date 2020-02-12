@@ -60,6 +60,7 @@ Configure miss: strncpy_s
 Configure miss: _ctime64_s
 Configure miss: _fseeki64
 Configure miss: _get_timezone
+Configure miss: _gmtime64_s
 Configure miss: _localtime64_s
 Configure miss: _mkgmtime64
 Configure miss: cygwin_conv_path
@@ -170,6 +171,7 @@ Configure miss: strncpy_s
 Configure miss: _ctime64_s
 Configure miss: _fseeki64
 Configure miss: _get_timezone
+Configure miss: _gmtime64_s
 Configure miss: _localtime64_s
 Configure miss: _mkgmtime64
 Configure miss: cygwin_conv_path
