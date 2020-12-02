@@ -1,9 +1,8 @@
-#
-# This file contains extra pkgconfig build requirements that don't get picked up but are 
-# desirable. One name per line, no whitespace.
-#
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
 acl-dev
 attr-dev
+bzip2-dev
 e2fsprogs-dev
 lz4-dev
 xz-dev
