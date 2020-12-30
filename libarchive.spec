@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xEC560C81CEC2276E (mm@FreeBSD.org)
 #
 Name     : libarchive
-Version  : 3.5.0
-Release  : 60
-URL      : https://github.com/libarchive/libarchive/releases/download/v3.5.0/libarchive-3.5.0.tar.xz
-Source0  : https://github.com/libarchive/libarchive/releases/download/v3.5.0/libarchive-3.5.0.tar.xz
-Source1  : https://github.com/libarchive/libarchive/releases/download/v3.5.0/libarchive-3.5.0.tar.xz.asc
-Summary  : Library to create and read several different archive formats
+Version  : 3.5.1
+Release  : 61
+URL      : https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz
+Source0  : https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz
+Source1  : https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz.asc
+Summary  : A library for handling streaming archive formats
 Group    : Development/Tools
 License  : BSD-2-Clause
 Requires: libarchive-bin = %{version}-%{release}
@@ -30,9 +30,10 @@ BuildRequires : zlib-dev
 BuildRequires : zstd-dev
 
 %description
-Libarchive is a programming library that can create and read several
-different streaming archive formats, including most popular TAR
-variants and several CPIO formats. It can also write SHAR archives.
+Libarchive is a programming library that can create and read several different
+streaming archive formats, including most popular tar variants, several cpio
+formats, and both BSD and GNU ar variants. It can also write shar archives and
+read ISO9660 CDROM images and ZIP archives.
 
 %package bin
 Summary: bin components for the libarchive package.
@@ -81,10 +82,10 @@ man components for the libarchive package.
 
 
 %prep
-%setup -q -n libarchive-3.5.0
-cd %{_builddir}/libarchive-3.5.0
+%setup -q -n libarchive-3.5.1
+cd %{_builddir}/libarchive-3.5.1
 pushd ..
-cp -a libarchive-3.5.0 buildavx2
+cp -a libarchive-3.5.1 buildavx2
 popd
 
 %build
@@ -92,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1606875380
+export SOURCE_DATE_EPOCH=1609293656
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -127,10 +128,10 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1606875380
+export SOURCE_DATE_EPOCH=1609293656
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
-cp %{_builddir}/libarchive-3.5.0/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a
+cp %{_builddir}/libarchive-3.5.1/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a
 pushd ../buildavx2/
 %make_install_avx2
 popd
@@ -196,9 +197,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/haswell/libarchive.so.13
-/usr/lib64/haswell/libarchive.so.13.5.0
+/usr/lib64/haswell/libarchive.so.13.5.1
 /usr/lib64/libarchive.so.13
-/usr/lib64/libarchive.so.13.5.0
+/usr/lib64/libarchive.so.13.5.1
 
 %files license
 %defattr(0644,root,root,0755)
