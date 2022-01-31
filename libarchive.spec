@@ -6,7 +6,7 @@
 #
 Name     : libarchive
 Version  : 3.5.2
-Release  : 66
+Release  : 67
 URL      : https://github.com/libarchive/libarchive/releases/download/v3.5.2/libarchive-3.5.2.tar.xz
 Source0  : https://github.com/libarchive/libarchive/releases/download/v3.5.2/libarchive-3.5.2.tar.xz
 Source1  : https://github.com/libarchive/libarchive/releases/download/v3.5.2/libarchive-3.5.2.tar.xz.asc
