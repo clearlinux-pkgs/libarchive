@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC560C81CEC2276E (mm@FreeBSD.org)
 #
 Name     : libarchive
-Version  : 3.5.2
-Release  : 67
-URL      : https://github.com/libarchive/libarchive/releases/download/v3.5.2/libarchive-3.5.2.tar.xz
-Source0  : https://github.com/libarchive/libarchive/releases/download/v3.5.2/libarchive-3.5.2.tar.xz
-Source1  : https://github.com/libarchive/libarchive/releases/download/v3.5.2/libarchive-3.5.2.tar.xz.asc
+Version  : 3.6.0
+Release  : 68
+URL      : https://github.com/libarchive/libarchive/releases/download/v3.6.0/libarchive-3.6.0.tar.xz
+Source0  : https://github.com/libarchive/libarchive/releases/download/v3.6.0/libarchive-3.6.0.tar.xz
+Source1  : https://github.com/libarchive/libarchive/releases/download/v3.6.0/libarchive-3.6.0.tar.xz.asc
 Summary  : A library for handling streaming archive formats
 Group    : Development/Tools
 License  : BSD-2-Clause
@@ -93,10 +93,10 @@ man components for the libarchive package.
 
 
 %prep
-%setup -q -n libarchive-3.5.2
-cd %{_builddir}/libarchive-3.5.2
+%setup -q -n libarchive-3.6.0
+cd %{_builddir}/libarchive-3.6.0
 pushd ..
-cp -a libarchive-3.5.2 buildavx2
+cp -a libarchive-3.6.0 buildavx2
 popd
 
 %build
@@ -104,12 +104,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633755873
+export SOURCE_DATE_EPOCH=1644951621
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mno-vzeroupper -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mno-vzeroupper -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mno-vzeroupper -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mno-vzeroupper -mprefer-vector-width=256 "
 %configure --disable-static --without-libxml2 \
 --without-expat \
 --without-lz4 \
@@ -118,9 +118,9 @@ make  %{?_smp_mflags}
 
 unset PKG_CONFIG_PATH
 pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3"
-export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3"
-export FFLAGS="$FFLAGS -m64 -march=x86-64-v3"
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 %configure --disable-static --without-libxml2 \
@@ -139,15 +139,15 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1633755873
+export SOURCE_DATE_EPOCH=1644951621
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
-cp %{_builddir}/libarchive-3.5.2/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a
+cp %{_builddir}/libarchive-3.6.0/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a
 pushd ../buildavx2/
 %make_install_v3
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 popd
 %make_install
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -210,7 +210,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libarchive.so.13
-/usr/lib64/libarchive.so.13.5.2
+/usr/lib64/libarchive.so.13.6.0
 /usr/share/clear/optimized-elf/lib*
 
 %files license
