@@ -6,7 +6,7 @@
 #
 Name     : libarchive
 Version  : 3.6.1
-Release  : 76
+Release  : 77
 URL      : https://github.com/libarchive/libarchive/releases/download/v3.6.1/libarchive-3.6.1.tar.xz
 Source0  : https://github.com/libarchive/libarchive/releases/download/v3.6.1/libarchive-3.6.1.tar.xz
 Source1  : https://github.com/libarchive/libarchive/releases/download/v3.6.1/libarchive-3.6.1.tar.xz.asc
@@ -103,12 +103,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656129416
+export SOURCE_DATE_EPOCH=1664934716
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
 %configure --disable-static --without-libxml2 \
 --without-expat \
 --without-lz4 \
@@ -138,10 +138,10 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1656129416
+export SOURCE_DATE_EPOCH=1664934716
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
-cp %{_builddir}/libarchive-3.6.1/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a
+cp %{_builddir}/libarchive-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a || :
 pushd ../buildavx2/
 %make_install_v3
 popd
@@ -162,6 +162,7 @@ popd
 %defattr(-,root,root,-)
 /usr/include/archive.h
 /usr/include/archive_entry.h
+/usr/lib64/glibc-hwcaps/x86-64-v3/libarchive.so
 /usr/lib64/libarchive.so
 /usr/lib64/pkgconfig/libarchive.pc
 /usr/share/man/man3/archive_entry.3
@@ -208,7 +209,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/glibc-hwcaps/x86-64-v3/libarchive.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libarchive.so.13
 /usr/lib64/glibc-hwcaps/x86-64-v3/libarchive.so.13.6.1
 /usr/lib64/libarchive.so.13
