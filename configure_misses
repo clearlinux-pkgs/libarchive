@@ -1,7 +1,5 @@
 Configure miss: CreateHardLinkA
 Configure miss: CreateHardLinkA
-Configure miss: LIBXML2_PC
-Configure miss: LIBXML2_PC
 Configure miss: MD5Init in -lmd
 Configure miss: MD5Init in -lmd
 Configure miss: _ctime64_s
@@ -20,104 +18,56 @@ Configure miss: acl
 Configure miss: acl
 Configure miss: attr/xattr.h
 Configure miss: attr/xattr.h
-Configure miss: attr/xattr.h presence
-Configure miss: attr/xattr.h presence
-Configure miss: attr/xattr.h usability
-Configure miss: attr/xattr.h usability
 Configure miss: bcrypt.h
 Configure miss: bcrypt.h
 Configure miss: blake2.h
 Configure miss: blake2.h
-Configure miss: blake2.h presence
-Configure miss: blake2.h presence
-Configure miss: blake2.h usability
-Configure miss: blake2.h usability
 Configure miss: blake2sp_init in -lb2
 Configure miss: blake2sp_init in -lb2
 Configure miss: copyfile.h
 Configure miss: copyfile.h
-Configure miss: copyfile.h presence
-Configure miss: copyfile.h presence
-Configure miss: copyfile.h usability
-Configure miss: copyfile.h usability
 Configure miss: cygwin_conv_path
 Configure miss: cygwin_conv_path
 Configure miss: facl
 Configure miss: facl
 Configure miss: fchflags
 Configure miss: fchflags
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: getvfsbyname
 Configure miss: getvfsbyname
 Configure miss: lchflags
 Configure miss: lchflags
+Configure miss: libxml-2.0
+Configure miss: libxml-2.0
 Configure miss: libxml/xmlreader.h
 Configure miss: libxml/xmlreader.h
-Configure miss: libxml/xmlreader.h presence
-Configure miss: libxml/xmlreader.h presence
-Configure miss: libxml/xmlreader.h usability
-Configure miss: libxml/xmlreader.h usability
 Configure miss: libxml/xmlwriter.h
 Configure miss: libxml/xmlwriter.h
-Configure miss: libxml/xmlwriter.h presence
-Configure miss: libxml/xmlwriter.h presence
-Configure miss: libxml/xmlwriter.h usability
-Configure miss: libxml/xmlwriter.h usability
 Configure miss: localcharset.h
 Configure miss: localcharset.h
-Configure miss: localcharset.h presence
-Configure miss: localcharset.h presence
-Configure miss: localcharset.h usability
-Configure miss: localcharset.h usability
 Configure miss: locale_charset
 Configure miss: locale_charset
 Configure miss: locale_charset in -lcharset
 Configure miss: locale_charset in -lcharset
 Configure miss: md5.h
 Configure miss: md5.h
-Configure miss: md5.h presence
-Configure miss: md5.h presence
-Configure miss: md5.h usability
-Configure miss: md5.h usability
 Configure miss: membership.h
 Configure miss: membership.h
-Configure miss: membership.h presence
-Configure miss: membership.h presence
-Configure miss: membership.h usability
-Configure miss: membership.h usability
 Configure miss: readpassphrase
 Configure miss: readpassphrase
 Configure miss: readpassphrase.h
 Configure miss: readpassphrase.h
-Configure miss: readpassphrase.h presence
-Configure miss: readpassphrase.h presence
-Configure miss: readpassphrase.h usability
-Configure miss: readpassphrase.h usability
 Configure miss: richacl_get_file in -lrichacl
 Configure miss: richacl_get_file in -lrichacl
 Configure miss: ripemd.h
 Configure miss: ripemd.h
-Configure miss: ripemd.h presence
-Configure miss: ripemd.h presence
-Configure miss: ripemd.h usability
-Configure miss: ripemd.h usability
 Configure miss: sha.h
 Configure miss: sha.h
-Configure miss: sha.h presence
-Configure miss: sha.h presence
-Configure miss: sha.h usability
-Configure miss: sha.h usability
 Configure miss: sha256.h
 Configure miss: sha256.h
-Configure miss: sha256.h presence
-Configure miss: sha256.h presence
-Configure miss: sha256.h usability
-Configure miss: sha256.h usability
 Configure miss: sha512.h
 Configure miss: sha512.h
-Configure miss: sha512.h presence
-Configure miss: sha512.h presence
-Configure miss: sha512.h usability
-Configure miss: sha512.h usability
 Configure miss: strncpy_s
 Configure miss: strncpy_s
 Configure miss: struct dirent.d_namlen
@@ -186,26 +136,10 @@ Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBSYSTEM
 Configure miss: support for ARCHIVE_CRYPTO_SHA512_LIBSYSTEM
 Configure miss: sys/ea.h
 Configure miss: sys/ea.h
-Configure miss: sys/ea.h presence
-Configure miss: sys/ea.h presence
-Configure miss: sys/ea.h usability
-Configure miss: sys/ea.h usability
 Configure miss: sys/extattr.h
 Configure miss: sys/extattr.h
-Configure miss: sys/extattr.h presence
-Configure miss: sys/extattr.h presence
-Configure miss: sys/extattr.h usability
-Configure miss: sys/extattr.h usability
 Configure miss: sys/richacl.h
 Configure miss: sys/richacl.h
-Configure miss: sys/richacl.h presence
-Configure miss: sys/richacl.h presence
-Configure miss: sys/richacl.h usability
-Configure miss: sys/richacl.h usability
-Configure miss: sys/utime.h presence
-Configure miss: sys/utime.h presence
-Configure miss: sys/utime.h usability
-Configure miss: sys/utime.h usability
 Configure miss: whether D_MD_ORDER is declared
 Configure miss: whether D_MD_ORDER is declared
 Configure miss: whether EFTYPE is declared
@@ -216,8 +150,6 @@ Configure miss: whether XATTR_NOFOLLOW is declared
 Configure miss: whether XATTR_NOFOLLOW is declared
 Configure miss: whether lstat accepts an empty string
 Configure miss: whether lstat accepts an empty string
-Configure miss: whether sys/types.h defines makedev
-Configure miss: whether sys/types.h defines makedev
 Configure miss: wincrypt.h
 Configure miss: wincrypt.h
 Configure miss: winioctl.h
