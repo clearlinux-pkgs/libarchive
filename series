@@ -1,0 +1,2 @@
+0001-Revert-autotools-Fix-static-linking-when-openssl-is-.patch
+0002-Fix-.pc-file-missing-a-reference-to-iconv.patch

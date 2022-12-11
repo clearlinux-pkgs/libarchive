@@ -6,7 +6,7 @@
 #
 Name     : libarchive
 Version  : 3.6.2
-Release  : 78
+Release  : 79
 URL      : https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz
 Source0  : https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz
 Source1  : https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz.asc
@@ -20,15 +20,24 @@ Requires: libarchive-license = %{version}-%{release}
 Requires: libarchive-man = %{version}-%{release}
 BuildRequires : acl-dev
 BuildRequires : attr-dev
+BuildRequires : automake
+BuildRequires : automake-dev
 BuildRequires : buildreq-cmake
 BuildRequires : bzip2-dev
 BuildRequires : e2fsprogs-dev
+BuildRequires : gettext-bin
+BuildRequires : libtool
+BuildRequires : libtool-dev
 BuildRequires : lz4-dev
 BuildRequires : lzo-dev
+BuildRequires : m4
 BuildRequires : openssl-dev
+BuildRequires : pkg-config-dev
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
 BuildRequires : zstd-dev
+Patch1: 0001-Revert-autotools-Fix-static-linking-when-openssl-is-.patch
+Patch2: 0002-Fix-.pc-file-missing-a-reference-to-iconv.patch
 
 %description
 Libarchive is a programming library that can create and read several different
@@ -95,6 +104,8 @@ man components for the libarchive package.
 %prep
 %setup -q -n libarchive-3.6.2
 cd %{_builddir}/libarchive-3.6.2
+%patch1 -p1
+%patch2 -p1
 pushd ..
 cp -a libarchive-3.6.2 buildavx2
 popd
@@ -104,18 +115,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1670625995
+export SOURCE_DATE_EPOCH=1670742982
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
 export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
 export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
 export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
-%configure --disable-static --without-libxml2 \
+%reconfigure --disable-static --without-libxml2 \
 --without-expat \
 --without-lz4 \
 --without-nettle
 make  %{?_smp_mflags}
-
 unset PKG_CONFIG_PATH
 pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
@@ -123,12 +133,13 @@ export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
 export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
-%configure --disable-static --without-libxml2 \
+%reconfigure --disable-static --without-libxml2 \
 --without-expat \
 --without-lz4 \
 --without-nettle
 make  %{?_smp_mflags}
 popd
+
 %check
 export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
@@ -139,7 +150,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1670625995
+export SOURCE_DATE_EPOCH=1670742982
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
 cp %{_builddir}/libarchive-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a
