@@ -7,7 +7,7 @@
 #
 Name     : libarchive
 Version  : 3.6.2
-Release  : 81
+Release  : 82
 URL      : https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz
 Source0  : https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz
 Source1  : https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz.asc
@@ -101,7 +101,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682993780
+export SOURCE_DATE_EPOCH=1685636285
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -136,7 +136,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1682993780
+export SOURCE_DATE_EPOCH=1685636285
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
 cp %{_builddir}/libarchive-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a || :
@@ -160,7 +160,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libarchive.so
 /usr/include/archive.h
 /usr/include/archive_entry.h
 /usr/lib64/libarchive.so
@@ -205,7 +204,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libarchive.so.13
 /V3/usr/lib64/libarchive.so.13.6.2
 /usr/lib64/libarchive.so.13
 /usr/lib64/libarchive.so.13.6.2
