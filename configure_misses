@@ -2,18 +2,10 @@ Configure miss: CreateHardLinkA
 Configure miss: CreateHardLinkA
 Configure miss: MD5Init in -lmd
 Configure miss: MD5Init in -lmd
-Configure miss: _ctime64_s
-Configure miss: _ctime64_s
 Configure miss: _fseeki64
 Configure miss: _fseeki64
 Configure miss: _get_timezone
 Configure miss: _get_timezone
-Configure miss: _gmtime64_s
-Configure miss: _gmtime64_s
-Configure miss: _localtime64_s
-Configure miss: _localtime64_s
-Configure miss: _mkgmtime64
-Configure miss: _mkgmtime64
 Configure miss: acl
 Configure miss: acl
 Configure miss: attr/xattr.h
@@ -50,6 +42,8 @@ Configure miss: locale_charset
 Configure miss: locale_charset
 Configure miss: locale_charset in -lcharset
 Configure miss: locale_charset in -lcharset
+Configure miss: localtime_s
+Configure miss: localtime_s
 Configure miss: md5.h
 Configure miss: md5.h
 Configure miss: membership.h
@@ -148,13 +142,17 @@ Configure miss: whether EXTATTR_NAMESPACE_USER is declared
 Configure miss: whether EXTATTR_NAMESPACE_USER is declared
 Configure miss: whether XATTR_NOFOLLOW is declared
 Configure miss: whether XATTR_NOFOLLOW is declared
+Configure miss: whether _mkgmtime is declared
+Configure miss: whether _mkgmtime is declared
+Configure miss: whether cmtime_s is declared
+Configure miss: whether cmtime_s is declared
+Configure miss: whether gmtime_s is declared
+Configure miss: whether gmtime_s is declared
 Configure miss: whether lstat accepts an empty string
 Configure miss: whether lstat accepts an empty string
 Configure miss: wincrypt.h
 Configure miss: wincrypt.h
 Configure miss: winioctl.h
 Configure miss: winioctl.h
-Configure miss: x86_64-generic-linux-gnu-file
-Configure miss: x86_64-generic-linux-gnu-file
 Configure miss: xmlInitParser in -lxml2
 Configure miss: xmlInitParser in -lxml2
