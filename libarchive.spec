@@ -7,9 +7,10 @@
 #
 # Source0 file verified with key 0x5848A18B8F14184B (martin@matuska.org)
 #
+%define keepstatic 1
 Name     : libarchive
 Version  : 3.7.7
-Release  : 85
+Release  : 86
 URL      : https://github.com/libarchive/libarchive/releases/download/v3.7.7/libarchive-3.7.7.tar.gz
 Source0  : https://github.com/libarchive/libarchive/releases/download/v3.7.7/libarchive-3.7.7.tar.gz
 Source1  : https://github.com/libarchive/libarchive/releases/download/v3.7.7/libarchive-3.7.7.tar.gz.asc
@@ -90,6 +91,15 @@ Group: Default
 man components for the libarchive package.
 
 
+%package staticdev
+Summary: staticdev components for the libarchive package.
+Group: Default
+Requires: libarchive-dev = %{version}-%{release}
+
+%description staticdev
+staticdev components for the libarchive package.
+
+
 %prep
 mkdir .gnupg
 chmod 700 .gnupg
@@ -107,7 +117,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1740618443
+export SOURCE_DATE_EPOCH=1740620072
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -120,7 +130,7 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export GOAMD64=v2
-%configure --disable-static --without-libxml2 \
+%configure  --without-libxml2 \
 --without-expat \
 --without-lz4 \
 --without-nettle
@@ -134,7 +144,7 @@ CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
-%configure --disable-static --without-libxml2 \
+%configure  --without-libxml2 \
 --without-expat \
 --without-lz4 \
 --without-nettle
@@ -161,7 +171,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1740618443
+export SOURCE_DATE_EPOCH=1740620072
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libarchive
 cp %{_builddir}/libarchive-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libarchive/90ba482db24552fe26fffe459bbc350224a79b3a || :
@@ -252,3 +262,7 @@ GOAMD64=v2
 /usr/share/man/man5/libarchive-formats.5
 /usr/share/man/man5/mtree.5
 /usr/share/man/man5/tar.5
+
+%files staticdev
+%defattr(-,root,root,-)
+/usr/lib64/libarchive.a
